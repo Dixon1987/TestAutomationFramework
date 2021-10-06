@@ -6,12 +6,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import steps.SearchSteps;
 
 import java.io.File;
 
 public abstract class BaseTest {
 
     private static WebDriver driver;
+    SearchSteps steps;
 
     public static WebDriver getDriver() {
         return driver;
@@ -24,6 +26,7 @@ public abstract class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://www.google.com");
+        steps = new SearchSteps();
     }
 
     @AfterClass
