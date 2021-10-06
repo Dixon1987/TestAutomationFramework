@@ -7,6 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import steps.SearchSteps;
+import utils.BrowserEnum;
+import utils.DriverFactory;
 
 import java.io.File;
 
@@ -21,10 +23,8 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        File file = new File("src/test/resources/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
+        driver = DriverFactory.getdriver(BrowserEnum.FIREFOX);
         driver.get("http://www.google.com");
         steps = new SearchSteps();
     }

@@ -29,3 +29,4 @@ src/main/
 target/classes/
 target/generated-test-sources/
 /.idea/
+/.idea/workspace.xml
