@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -10,16 +11,18 @@ import static org.testng.Assert.assertTrue;
 
 public class SearchResultPage extends BasePage {
 
-    private By firstResult = By.xpath(".//h3[@class='LC20lb DKV0Md']");
+    //private By firstResult = By.xpath(".//h3[@class='LC20lb DKV0Md']");
     private By allResults = By.xpath(".//h3[@class='LC20lb DKV0Md']");
+
+    @FindBy(xpath = ".//h3[@class='LC20lb DKV0Md']")
+    private WebElement result;
 
     public SearchResultPage() {
         super();
     }
 
     public void assertThatTopResultContainsText(String expectedResult) {
-        WebElement firstResultElement = driver.findElement(firstResult);
-        assertThat(firstResultElement.getText()).as("Wrong text!").containsIgnoringCase(expectedResult);
+        assertThat(result.getText()).as("Wrong text!").containsIgnoringCase(expectedResult);
     }
 
     public void assertThatAllResultsContainsText(String expectedResult) {
