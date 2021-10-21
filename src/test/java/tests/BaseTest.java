@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import steps.SearchSteps;
 import utils.BrowserEnum;
 import utils.DriverFactory;
+import utils.PropertyReader;
 
 import java.io.File;
 
@@ -24,8 +25,8 @@ public abstract class BaseTest {
     @BeforeClass
     public void setUp() {
 
-        driver = DriverFactory.getdriver(BrowserEnum.FIREFOX);
-        driver.get("http://www.google.com");
+        driver = DriverFactory.getdriver(PropertyReader.getBrowser());
+        driver.get(PropertyReader.getBaseUrl());
         steps = new SearchSteps();
     }
 
